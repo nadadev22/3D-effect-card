@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Card</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Playfair+Display|Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #101010, #bcbcbc);
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: "Playfair Display", serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            width: 400px;
+            height: 250px;
+            background-image: url('download.jpeg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+
+        .card-content {
+            text-align: center;
+            color: #fff;
+            transform-style: preserve-3d;
+        }
+
+        .card h1 {
+            font-size: 2rem;
+            transform: translateZ(80px);
+            color: #95ecec;
+        }
+
+        .card p {
+            font-size: 1rem;
+            transform: translateZ(40px);
+        }
+
+        .card p.related {
+            transform: translateZ(60px);
+            font-style: italic;
+        }
+
+        .card a {
+            color: #69c6b8;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .card a:hover {
+            color: #afd7ee;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-content">
+            <h1>Just hover around</h1>
+            <p><small>by <a href="https://www.instagram.com/nada_al_dev/?__pwa=1#" target="_blank">nada_al_dev</a></small></p>
+            <p class="related"><strong>See also: </strong><a href="" target="_blank">Portfolio</a></p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        var card = $(".card");
+
+        $(document).on("mousemove", function (e) {
+            var ax = -($(window).innerWidth() / 2 - e.pageX) / 20;
+            var ay = ($(window).innerHeight() / 2 - e.pageY) / 10;
+            card.css("transform", `rotateY(${ax}deg) rotateX(${ay}deg)`);
+        });
+    </script>
+
+</body>
+</html>
